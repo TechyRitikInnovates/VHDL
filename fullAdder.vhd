@@ -1,0 +1,18 @@
+library ieee;
+use ieee.std_logic_1164.all;
+library work;
+use work.Gates.all;
+
+entity fullAdder is
+Port(A, B, Cin: in std_logic; S, Cout: out std_logic);
+end entity fullAdder;
+
+architecture struct of fullAdder is
+signal tc, ts, u, v: std_logic;
+begin
+ha:Half_Adder
+port map(A=> A, B => B, S => ts, C=> tc);
+x1 : XOR_2 port map(A=>ts, B=> Cin, Y=>s);
+a1 : AND_2 port map(A=>ts, B=> Cin, Y=>v);
+o1 : OR_2 port map(A=> v, B=>tc, Y=> Cout);
+end struct;
